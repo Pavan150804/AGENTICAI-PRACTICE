@@ -1,0 +1,11 @@
+mytuple=(1,2,"pavan",6,8)
+emptyTuple=()
+emp2=tuple()
+print(mytuple)
+print(emptyTuple)
+print(emp2)
+print(mytuple[-1])
+print(mytuple[1])
+print(mytuple[1::1])
+#del mytuple entire tuple is deleted
+#print(mytuple)

@@ -1,0 +1,38 @@
+# Virtual environments
+apienv/
+env1/
+evn2/
+evn3/
+hugenv/
+pytorch_env/
+pytorch_env2/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# VS Code
+.vscode/
+
+# Gradio
+.gradio/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# PyTorch models
+*.pt
+*.pth
+*.bin
+
+# Environment variables
+.env
+
+# Hugging Face / PyTorch models
+models/
+*.safetensors
+*.bin
+*.pt
+*.pth
+runs/

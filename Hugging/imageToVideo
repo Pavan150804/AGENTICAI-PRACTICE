@@ -1,0 +1,32 @@
+from diffusers import StableVideoDiffusionPipeline
+from PIL import Image
+import torch
+import imageio
+
+pipe = StableVideoDiffusionPipeline.from_pretrained(
+    "stabilityai/stable-video-diffusion-img2vid",
+    torch_dtype=torch.float16,
+    variant="fp16"
+).to("cuda")
+
+image = Image.open("cat.jpg")
+
+frames = pipe(image, num_frames=25).frames[0]
+
+imageio.mimsave("output.mp4", frames, fps=8)
+
+
+import torch
+from diffusers import DiffusionPipeline
+from diffusers.utils import load_image, export_to_video
+
+pipe = DiffusionPipeline.from_pretrained("stabilityai/stable-video-diffusion-img2vid", dtype=torch.bfloat16, device_map="cuda")
+pipe.to("cuda")
+
+prompt = "A man with short gray hair plays a red electric guitar."
+image = load_image(
+    "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/diffusers/guitar-man.png"
+)
+
+output = pipe(image=image, prompt=prompt).frames[0]
+export_to_video(output, "output.mp4")
